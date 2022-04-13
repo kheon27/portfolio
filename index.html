@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <title>김희언 포트폴리오</title>
     <meta content="images/test.png" property="og:image"><!--카톡 링크이미지-->
     <meta content="김희언_포트폴리오" property="og:title"><!--카톡제목-->
     <meta content="김희언 포트폴리오입니다" property="og:title"><!--카톡설명-->
@@ -12,12 +14,12 @@
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/lightbox.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/lightbox.css">
     <link rel="stylesheet" type="text/css" href="css/slick.css"/>
     <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    
-    <title>김희언 포트폴리오</title>
     <script>
       $(document).ready(function(){
         AOS.init();
@@ -87,19 +89,25 @@ item.addClass('active');
 }
 });
 
+$('.pro_btn a').each(function(){
+      $(this).click(function(){
+        var a = $(this); //=> 현재 클릭한 a 태그만 찾기 위해
+        var aHref = $(this).attr('href');
+        $('.pop').hide(); //팝업 오픈 버튼을 누르면 나머지 싹 닫기 위해
+        $('.pro_btn a').removeClass('select_btn');
+        $(aHref).show();
+        a.addClass('select_btn');
 
-          $('.con1>div>#my-button').each(function(){
-            $('#my-button').bind('click', function(e) {
-                e.preventDefault();
-                $('#element_to_pop_up').bPopup({
-                  modalClose: false,
-                  opacity: 0.6,
-                  positionStyle: 'fixed'
-                   });
-            });
-          });
+        $('.btn').click(function(){
+          a.removeClass('select_btn');
+          $(aHref).hide();
+        });//$('.btn').click
 
-          
+      }); //$(this).click
+      }); //$('.modal_select a').each
+      $('.close').click(function(){
+        $('.pop').hide();
+        });//$('.btn').click
 
      });
      
@@ -114,10 +122,10 @@ item.addClass('active');
   <nav>
       <ul class="menu">
           <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Web</a></li>
-          <li><a href="#">Etc</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="#about_section">About</a></li>
+          <li><a href="#web_section">Web</a></li>
+          <li><a href="#etc_section">Etc</a></li>
+          <li><a href="#contact_footer">Contact</a></li>
       </ul>
   </nav> 
   <div class="clear"></div> 
@@ -147,7 +155,7 @@ item.addClass('active');
   </div>
 </div>
  </section>
- <section class="sec2">
+ <section class="sec2" id="about_section">
 <div class="inner">
   <div class="intro_sub"data-aos="fade-right"
   data-aos-offset="400"
@@ -195,7 +203,7 @@ item.addClass('active');
 <div class="intro_sub_br"></div>
 </div>
  </section>
- <section class="sec3">
+ <section class="sec3" id="web_section">
 <div class="inner">
   <div class="web_title">
     <h2>WEB</h2>
@@ -222,7 +230,7 @@ item.addClass('active');
               </tr>
             </table>
                 <div class="pro_btn">
-                  <a href="#"><div class="concept">컨셉서 보기</div></a>
+                  <a href="#pop_up2" class="modal2"><div class="concept">컨셉서 보기</div></a>
                   <a href="#"><div class="site">사이트 바로가기</div></a>
                 </div>
           </div>
@@ -271,7 +279,7 @@ item.addClass('active');
               </tr>
             </table>
                 <div class="pro_btn">
-                  <a href="#"><div class="concept">컨셉서 보기</div></a>
+                  <a href="#pop_up1" class="modal1"><div class="concept">컨셉서 보기</div></a>
                   <a href="https://frelicity.cafe24.com/"><div class="site">사이트 바로가기</div></a>
                 </div>
           </div>
@@ -297,27 +305,12 @@ item.addClass('active');
             </table>
                 <div class="pro_btn">
                   <a href="#"><div class="concept">컨셉서 보기</div></a>
-                  <div id="pop_up">
-                    <div class="img">
-                      <img src="images/frelicity_concept.jpg">
-                      <div class="btn">
-                      <button>닫기</button>
-                    </div>
-                    </div>    
-                  </div>
                   <a href="#"><div class="site">사이트 바로가기</div></a>
                 </div>
           </div>
         </div>
       </div>
       <div class="slider-nav">
-        <div><img src="images/mini_hollys.jpg">
-          <div class="mini_info hollys">
-            <h4>HOLLYS<br>COFFEE</h4>
-          <p>원페이지 스크롤의<br>
-          반응형 웹페이지</P>
-        </div>
-        </div>
         <div><img src="images/mini_ship.jpg">
           <div class="mini_info">
         <h4>남성해운</h4>
@@ -333,11 +326,18 @@ item.addClass('active');
         </div>
         </div>
         <div><img src="images/mini_ship.jpg"></div>
+        <div><img src="images/mini_hollys.jpg">
+          <div class="mini_info hollys">
+            <h4>HOLLYS<br>COFFEE</h4>
+          <p>원페이지 스크롤의<br>
+          반응형 웹페이지</P>
+        </div>
+        </div>
       </div>
     </div>
   </div>
  </section>
- <section class="sec4">
+ <section class="sec4" id="etc_section">
   <div class="inner">
   <div class="etc_title">
     ETC
@@ -345,35 +345,104 @@ item.addClass('active');
   <div class="etc_pro">
     <div class="etc_slide">
     <div class="single-item">
-      <div><img src="images/banner1.jpg"></div>
-      <div><img src="images/banner2.jpg"></div>
-      <div><img src="images/banner4.jpg"></div>
-      <div><img src="images/banner5.jpg"></div>
+      <div>
+      <p>재난지원금 신청안내 배너</p>  
+      <img src="images/banner1.jpg">
+    </div>
+      <div>
+        <p>동물병원 홍보 배너</p>
+        <img src="images/banner2.jpg">
+      </div>
+      <div>
+        <p>가정의 달 혜택안내 배너</p>
+        <img src="images/banner4.jpg">
+      </div>
+      <div>
+      <p>이디야 커피 캠페인 배너</p>  
+      <img src="images/banner5.jpg"></div>
     </div>
   </div>
     <div class="con1">
-      <div class="lo_mockup">a</div>
-      <div class="card_mockup">b</div>
-      <div class="post_mockup">c</div>
-      <div class="le_mockup">d</div>
+      <!--
+      <div class="lo_mockup">
+      <p>로고</p>  
+      </div>
+      <div class="photo">
+       
+       <a href="images/cardnews.jpg" data-lightbox="photos" data-title="아름다운 성">
+        <p>카드뉴스</p> 
+        <img src="images/card_intro.jpg" class="img-thumbnail" alt="castle">
+      </a>
+      </div>
+      <div class="post_mockup">
+       <p>포스터</p> 
+      </div>
+      <div class="le_mockup">
+       <p>리플렛</p> 
+      </div>-->
+      <div class="photo">
+        <a href="images/cardnews.jpg" data-lightbox="photos" data-title="아름다운 성">
+         <p>로고</p> 
+         <img src="images/lo_mockup1.jpg" class="img-thumbnail" alt="castle">
+       </a>
+       <a href="images/lo_mockup.jpg" data-lightbox="photos" data-title="아름다운 성"></a>
+       </div>
+        <div class="photo">
+         <a href="images/cardnews.jpg" data-lightbox="photos1" data-title="아름다운 성">
+          <p>카드뉴스</p> 
+          <img src="images/card_intro.jpg" class="img-thumbnail" alt="castle">
+        </a>
+        </div>
+        <div class="photo">
+          <a href="images/cardnews.jpg" data-lightbox="photos1" data-title="아름다운 성">
+           <p>포스터</p> 
+           <img src="images/poster_mockup.jpg" class="img-thumbnail" alt="castle">
+         </a>
+         </div>
+         <div class="photo">
+          <a href="images/cardnews.jpg" data-lightbox="photos" data-title="아름다운 성">
+           <p>리플렛</p> 
+           <img src="images/le_mockup.jpg" class="img-thumbnail" alt="castle">
+         </a>
+         </div>
     </div>
     <div class="con2">
-      <div class="tw_mockup">e</div>
-      <div class="panda_mockup">f</div>
-      <div class="page">g</div>
-      <div class="promotion">h</div>
+      <div class="photo">
+        <a href="images/tw_mockup.jpg" data-lightbox="photos" data-title="아름다운 성">
+         <p>엽서</p> 
+         <img src="images/tw_mockup.jpg" class="img-thumbnail" alt="castle">
+       </a>
+       </div>
+       <div class="photo">
+        <a href="images/panda_mockup.jpg" data-lightbox="photos" data-title="아름다운 성">
+         <p>엽서</p> 
+         <img src="images/panda_mockup.jpg" class="img-thumbnail" alt="castle">
+       </a>
+       </div>
+       <div class="photo">
+        <a href="images/cardnews.jpg" data-lightbox="photos" data-title="아름다운 성">
+         <p>상세페이지</p> 
+         <img src="images/le_mockup.jpg" class="img-thumbnail" alt="castle">
+       </a>
+       </div>
+       <div class="photo">
+        <a href="images/banner7.jpg" data-lightbox="photos" data-title="아름다운 성">
+         <p>프로모션 배너</p> 
+         <img src="images/banner7.jpg" class="img-thumbnail" alt="castle">
+       </a>
+       </div>
     </div>
   </div>
   </div>
  </section>
  <footer>
 <div class="inner">
-  <div class="contact">
+  <div class="contact" id="contact_footer">
   <div class="contact1">
     <h2>CONTACT</h2>
     <img src="images/wave.png">
-    <p class="ph">010-4073-0186</p>
-    <p class="em">mycute21151@naver.com</p>
+    <p class="ph"><a href="tel:010-4073-0186">010-4073-0186</a></p>
+    <p class="em"><a href="mailto:mycute21151@naver.com">mycute21151@naver.com</p>
     <p class="copy">COPYRIGHT ⓒ 2022 김희언 포트폴리오. ALL RIGHTS RESERVED.
       본 사이트는 개인 포트폴리오 사이트로 제작되어 상업적 목적이 아닙니다.
       사용된 일부 이미지 및 폰트 등은 별도의 출처가 있음을 밝혀 드립니다.
@@ -418,5 +487,35 @@ $('.single-item').slick({
   		})
   		
 </script>
+<div id="pop_up1" class="pop">
+  <div class="inner">
+  <div class="close"></div>
+  <div class="img">
+   <img src="images/frelicity_concept.jpg">
+     <div class="btn">
+        <button>닫기</button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div id="pop_up2" class="pop">
+    <div class="inner">
+    <div class="close"></div>
+    <div class="img">
+     <img src="images/hollys_concept.jpg">
+       <div class="btn">
+          <button>닫기</button>
+       </div>
+      </div>
+     </div>
+    </div>
+  <div id="pop_up3" class="pop">
+    <div class="img">
+     <img src="http://via.placeholder.com/400x300">
+     <div class="btn">
+       <button>추가 팝업닫기</button>
+    </div>
+    </div>  
+    </div>
 </body>
 </html>
