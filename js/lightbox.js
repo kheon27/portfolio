@@ -407,7 +407,7 @@ Lightbox.prototype.sizeContainer = function(imageWidth, imageHeight) {
     // self.$lightbox.find('.lb-nextLink').height(newHeight);
 
     // 내용, 좌우 버튼 사이즈
-    self.$lightbox.find('.lb-dataContainer').width(20+"%");
+    self.$lightbox.find('.lb-dataContainer').width(45+"%");
     self.$lightbox.find('.lb-prevLink').height(newHeight);
     self.$lightbox.find('.lb-nextLink').height(newHeight);
 
