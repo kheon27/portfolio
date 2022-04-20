@@ -24,42 +24,6 @@
       $(document).ready(function(){
         AOS.init();
 
-        $(".animated-progress span").each(function() {
-  $(this).animate(
-    {
-      width: $(this).attr("data-progress") + "%",
-    },
-    1000,
-  );
-  $(this).text($(this).attr("data-progress") + "%");
-});
-$('.tabSet').each(function(){ //클래스마다 각자
-
-var anchor = $(this).find('.tabs a'); //.tabSet 안에서 a 찾기
-var anchor_on = $(this).find('.tabs a.on'); //a에 .on 붙은 애만 고르기
-var on_href = anchor_on.attr('href'); //a에 .on 붙은 애한테서 href 값
-var panels = $(this).find('.panels > div'); //.tabSet 안에서 내용 찾기
-
-panels.hide();
-$(on_href).show();
-anchor.removeClass('on'); //모두 .on 제거
-
-anchor.each(function(){  //.tabSet a들
-var href = $(this).attr('href'); //클릭한 애 href을 찾는다
-
-$(this).click(function(){  //클릭한 a
-
-    anchor.removeClass('on'); //모두 .on 제거
-    panels.hide();
-    $(this).addClass('on'); //클릭한 애한테 .on 부여
-    $(href).show(); //클릭한 애 href 값만 보여준다.
-
-}); //a태그 클릭시 행동
-
-}); //anchor each end
-
-}); //tabSet each end
-
 var a = 1;
 $('.btn_all').click(function () {
 if (a == 1) {
@@ -80,12 +44,16 @@ const item = $(this);
 let speed = 200;
 aco.parent().find('.sub').stop().slideUp(speed);
 if(item.hasClass('active')){
+
 item.find('.sub').stop().slideUp(speed);	
 item.removeClass('active');
 }else{
 item.parent().find('.sub').stop().slideDown();
+$('.box').hide();
+$('.btn_all').removeClass('on');
 aco.removeClass('active');
 item.addClass('active');
+
 }
 });
 
@@ -155,9 +123,6 @@ $('.pro_btn a').each(function(){
      });
      
     </script>
-    <style>
-      .imgsize11{width:45%;}
-    </style>
 </head>
 <body>
  <header>
@@ -173,6 +138,20 @@ $('.pro_btn a').each(function(){
           <li><a href="#etc_section">Etc</a></li>
           <li><a href="#contact_footer">Contact</a></li>
       </ul>
+      <div class="btn_all">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="box">
+        <ul class="m_menu">
+          <li><a href="#header_section">Home</a></li>
+          <li><a href="#about_section">About</a></li>
+          <li><a href="#web_section">Web</a></li>
+          <li><a href="#etc_section">Etc</a></li>
+          <li><a href="#contact_footer">Contact</a></li>
+        </ul>
+      </div>
   </nav> 
   <div class="clear"></div> 
 </div> 
@@ -210,39 +189,40 @@ $('.pro_btn a').each(function(){
     <h1>멈추지 않는<br>
     디자이너<br>
     <span>김희언입니다</span></h1>
+    <div class="pic2"><img src="images/profile.png"></div>
+    <div class="clear"></div>
+    <div class="sub_design3">
+      <p>
+        “우리는 답을 찾을 것이다. 늘 그랬듯이”
+        어려움을 직면 했을 때 멈추지 않고 나아가다 
+        보면 길이 보인다  라고 생각합니다.
+      </p>
+      </div> 
+      <div class="sub_design4">
+        <p>
+          빠르게 변화하는 디자인의 세계에서도
+          멈추지 않고 길을 나아가는 디자이너가
+          되고 싶습니다.
+        </p>
+        </div> 
   </div>
   <div class="design_1">
     <div class="sub_design1">
     <h3>저는 이런 능력이 있습니다.</h3>
-    <p><span>웹 디자인을 할 수 있습니다.</span><br>
-    HTML, CSS, Javascript를 활용하여<br>
+    <p><span>웹 디자인</span><br>
+    HTML, CSS, Javascript를 활용하여
     자체 웹사이트 제작이 가능합니다.</p>
   </div>
+  </div>
+  <div class="design_2">
+   <div class="pic">
+        <img src="images/profile.png">
+  </div>
   <div class="sub_design2">
-    <p><span>그래픽 디자인도 할 수 있습니다.</span><br>
+    <p><span>그래픽 디자인</span><br>
       PhotoShop, Illustrator, XD를 활용하
       여 웹에 필요한 그래픽 디자인이 가능합니다.
     </p>
-  </div>
-    <div class="sub_design3">
-    <p>
-      “우리는 답을 찾을 것이다. 늘 그랬듯이”
-      어려움을 직면 했을 때 멈추지 않고 나아가다 
-      보면 길이 보인다  라고 생각합니다.
-    </p>
-    </div>  
-  </div>
-  <div class="design_2">
-    <div class="sub_design4">
-    <p>
-      빠르게 변화하는 디자인의 세계에서도
-      멈추지 않고 길을 나아가는 디자이너가
-      되고 싶습니다.
-    </p>
-    </div>
-    <div class="pic">
-        <img src="images/profile.png">
-        <div class="rab"></div>
   </div>
   </div>
 </div>
@@ -256,10 +236,11 @@ $('.pro_btn a').each(function(){
     </div>
     <div class="project">
       <div class="slider-for">
-        <div><img src="images/big_hollys1.png">
-          <div class="pro_info">
+        <div>
+          <div class="pro_com"><img src="images/big_hollys1.png"></div>
+          <div class="pro_info holly">
             <img src="images/hollys_logo.png">
-            <h1>HOLLYS<br>COFFEE</h1>
+            <h1>HOLLYS <br>COFFEE</h1>
             <table>
               <tr>
                 <td class="ky">제작기간</td>
@@ -271,7 +252,7 @@ $('.pro_btn a').each(function(){
               </tr>
               <tr>
                 <td class="ky">기획의도</td>
-                <td>기존 할리스 커피의 웹사이트를 원페이지 스크롤<br>
+                <td class="na">기존 할리스 커피의 웹사이트를 원페이지 스크롤
                   형식인 반응형 웹사이트로 리뉴얼</td>
               </tr>
             </table>
@@ -281,7 +262,8 @@ $('.pro_btn a').each(function(){
                 </div>
           </div>
         </div>
-        <div><img src="images//big_ship.png">
+        <div>
+          <div class="pro_com"><img src="images/big_ship.png"></div>
           <div class="pro_info ship">
             <img src="images/ship_logo.png">
             <h1>남성해운</h1>
@@ -296,17 +278,18 @@ $('.pro_btn a').each(function(){
               </tr>
               <tr>
                 <td class="ky">기획의도</td>
-                <td>남성해운 업체의 로고색을 포인트로 하여 깔끔한<br>
+                <td class="na">남성해운 업체의 로고색을 포인트로 하여 깔끔한
                 디자인의 반응형 웹페이지로 리뉴얼</td>
               </tr>
             </table>
                 <div class="pro_btn">
-                  <a href="#"><div class="concept">컨셉서 보기</div></a>
+                  <a href="#pop_up3" class="modal3"><div class="concept">컨셉서 보기</div></a>
                   <a href=" https://kheon27.github.io/namsungshipping/"><div class="site">사이트 바로가기</div></a>
                 </div>
           </div>
         </div>
-        <div><img src="images/big_freli.png">
+        <div>
+          <div class="pro_com"><img src="images/big_freli.png"></div>
           <div class="pro_info freli">
             <img src="images/fr_logo.png">
             <h1>펠리시티</h1>
@@ -321,7 +304,7 @@ $('.pro_btn a').each(function(){
               </tr>
               <tr>
                 <td class="ky">기획의도</td>
-                <td>카페24를 활용한 여성스럽고 Nature한 분위기의 <br>자체제작 화장품 홈페이지</td>
+                <td class="na">카페24를 활용한 여성스럽고 Nature한 분위기의 자체제작 화장품 홈페이지</td>
               </tr>
             </table>
                 <div class="pro_btn">
@@ -330,23 +313,23 @@ $('.pro_btn a').each(function(){
                 </div>
           </div>
         </div>
-        <div><img src="images/big_hollys.png">
-          <div class="pro_info">
-            <img src="images/ship_logo.png">
-            <h1>남성해운</h1>
+        <div>
+          <div class="pro_com"><img src="images/big_landing.png"></div>
+          <div class="pro_info freli">
+           <!-- <img src="images/fr_logo.png">-->
+            <h1>Landing Page</h1>
             <table>
               <tr>
                 <td class="ky">제작기간</td>
-                <td>2022.03.07 ~ 03.11</td>
+                <td>2022.04.31 ~ ing</td>
               </tr>
               <tr>
                 <td class="ky">키워드</td>
-                <td>#BLUE, #깔끔한, #아이덴티티</td>
+                <td>준비중입니다.</td>
               </tr>
               <tr>
                 <td class="ky">기획의도</td>
-                <td>남성해운 업체의 로고색을 포인트로 하여 깔끔한<br>
-                디자인의 반응형 웹페이지로 리뉴얼</td>
+                <td class="na">준비중입니다.</td>
               </tr>
             </table>
                 <div class="pro_btn">
@@ -371,7 +354,13 @@ $('.pro_btn a').each(function(){
           자체제작 사이트</P>
         </div>
         </div>
-        <div><img src="images/mini_ship.jpg"></div>
+        <div><img src="images/mini_beer.jpg">
+          <div class="mini_info">
+            <h4>랜딩 페이지</h4>
+          <p>현재<br>
+          준비중입니다</P>
+        </div>
+        </div>
         <div><img src="images/mini_hollys.jpg">
           <div class="mini_info hollys">
             <h4>HOLLYS<br>COFFEE</h4>
@@ -409,75 +398,55 @@ $('.pro_btn a').each(function(){
     </div>
   </div>
     <div class="con1">
-      <!--
-      <div class="lo_mockup">
-      <p>로고</p>  
-      </div>
       <div class="photo">
-       
-       <a href="images/cardnews.jpg" data-lightbox="photos" data-title="아름다운 성">
-        <p>카드뉴스</p> 
-        <img src="images/card_intro.jpg" class="img-thumbnail" alt="castle">
-      </a>
-      </div>
-      <div class="post_mockup">
-       <p>포스터</p> 
-      </div>
-      <div class="le_mockup">
-       <p>리플렛</p> 
-      </div>-->
-      <div class="photo">
-        <a href="images/logo_end.jpg" data-lightbox="photos" data-title="아름다운 성">
+        <a href="images/logo_end.jpg" data-lightbox="photos" data-title="건강주스 로고 디자인">
          <p>로고</p> 
          <img src="images/lo_mockup1.jpg" class="img-thumbnail" alt="castle">
        </a>
-       <a href="images/lo_mockup.jpg" data-lightbox="photos" data-title="아름다운 성"></a>
        </div>
         <div class="photo">
-         <a href="images/cardnews.jpg" data-lightbox="photos1" data-title="아름다운 성">
+         <a href="images/cardnews.jpg" data-lightbox="photos1" data-title="쿨톤 립 추천 카드뉴스">
           <p>카드뉴스</p> 
           <img src="images/card_intro.jpg" class="img-thumbnail" alt="castle">
         </a>
         </div>
         <div class="photo">
-          <a href="images/poster_end.jpg" data-lightbox="photos1" data-title="아름다운 성">
+          <a href="images/poster_end.jpg" data-lightbox="photos1" data-title="페스티벌, 아웃도어 포스터">
            <p>포스터</p> 
            <img src="images/poster_mockup.jpg" class="img-thumbnail" alt="castle">
          </a>
          </div>
          <div class="photo">
-          <a href="images/le_end.jpg" data-lightbox="photos" data-title="아름다운 성">
+          <a href="images/le_end.jpg" data-lightbox="photos" data-title="북촌한옥마을 리플렛">
            <p>리플렛</p> 
            <img src="images/le_mockup.jpg" class="img-thumbnail" alt="castle">
          </a>
          </div>
-    </div>
-    <div class="con2">
       <div class="photo">
-        <a href="images/postcard_end.jpg" data-lightbox="photos" data-title="아름다운 성">
+        <a href="images/postcard_end.jpg" data-lightbox="photos" data-title="캐릭터, 라인아트 엽서">
          <p>엽서</p> 
          <img src="images/tw_mockup.jpg" class="img-thumbnail" alt="castle">
        </a>
        </div>
        <div class="photo">
-        <a href="images/panda_mockup.jpg" data-lightbox="photos" data-title="아름다운 성">
-         <p>엽서</p> 
-         <img src="images/panda_mockup.jpg" class="img-thumbnail" alt="castle">
+        <a href="images/poly_end.jpg" data-lightbox="photos" data-title="폴리곤 아트">
+         <p>아트</p> 
+         <img src="images/poly.jpg" class="img-thumbnail" alt="castle">
        </a>
        </div>
        <div class="photo">
-        <a href="images/cardnews.jpg" data-lightbox="photos" data-title="아름다운 성">
+        <a href="images/page_end.jpg" data-lightbox="photos" data-title="에멀젼 상세페이지">
          <p>상세페이지</p> 
-         <img src="images/le_mockup.jpg" class="img-thumbnail" alt="castle">
+         <img src="images/page1.jpg" class="img-thumbnail" alt="castle">
        </a>
        </div>
        <div class="photo">
-        <a href="images/banner7.jpg" data-lightbox="photos" data-title="아름다운 성">
+        <a href="images/banner7.jpg" data-lightbox="photos" data-title="휠라 프로모션 배너">
          <p>프로모션 배너</p> 
          <img src="images/banner7.jpg" class="img-thumbnail" alt="castle">
        </a>
        </div>
-    </div>
+      </div>
   </div>
   </div>
  </section>
@@ -524,10 +493,15 @@ $('.slider-nav').slick({
   slidesToShow: 3,
   slidesToScroll: 1,
   asNavFor: '.slider-for',
-  dots: true,
+  dots: false,
   centerMode: true,
-  focusOnSelect: true
+  focusOnSelect: true,
+  responsive: [
+    { breakpoint: 685, // 화면의 넓이가 600px 이상일 때 
+      settings: {  dots: true }}
+   ]
 });
+
 $('.single-item').slick({
   adaptiveHeight: true
 });
@@ -539,9 +513,6 @@ $('.single-item').slick({
   <div class="close"></div>
   <div class="img">
    <img src="images/frelicity_concept.jpg">
-     <div class="btn">
-        <button>닫기</button>
-     </div>
     </div>
    </div>
   </div>
@@ -550,19 +521,16 @@ $('.single-item').slick({
     <div class="close"></div>
     <div class="img">
      <img src="images/hollys_concept.jpg">
-       <div class="btn">
-          <button>닫기</button>
-       </div>
       </div>
      </div>
     </div>
-  <div id="pop_up3" class="pop">
-    <div class="img">
-     <img src="http://via.placeholder.com/400x300">
-     <div class="btn">
-       <button>추가 팝업닫기</button>
-    </div>
-    </div>  
-    </div>
+    <div id="pop_up3" class="pop">
+      <div class="inner">
+      <div class="close"></div>
+      <div class="img">
+       <img src="images/ship_concept.jpg">
+        </div>
+       </div>
+      </div>
 </body>
 </html>
