@@ -226,6 +226,7 @@
     list-style: none;
 
     text-align: center;
+    left:-10px;
 }
 .slick-dots li
 {
