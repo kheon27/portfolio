@@ -305,6 +305,7 @@ padding:0;
 
   .pro_info.ship{padding-top:49px;}
   .pro_info.freli{padding-top:49px;}
+  .pro_info.langd{padding-top:110px;}
 
   .pro_btn div{
    background-color: #18347a;
@@ -665,6 +666,7 @@ line-height:43px;
 margin-bottom:20px;
 }
 .holly{margin-top:6px;}
+.pro_info.langd{padding-top:99px;}
 /*작업물*/
 .etc_pro{width:90%;}
 .etc_slide{margin-bottom:100px;}
@@ -836,6 +838,7 @@ margin-top:50px;
   .slider-nav img{display:none;}
   .mini_info{display:none;}
   .pro_info h1{font-size:24px;}
+  .pro_info.langd{padding-top:49px;}
 
   /*작업*/
   .con1{margin-bottom:250px;}
@@ -940,7 +943,7 @@ margin-top:50px;
 
 @media(max-width:356px){
   /*웹*/
-  .project{width:73%;}
+  .project{width:74%;}
 }
 
 @media(max-width:332px){
